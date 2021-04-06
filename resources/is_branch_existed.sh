@@ -10,6 +10,8 @@ fi
 
 BRANCH_NAME=$ENV_BRANCH_NAME
 
+echo -n "Check branch $BRANCH_NAME"
+
 BRANCH_EXISTED=`/usr/bin/env git rev-parse --quiet --verify ${BRANCH_NAME}`
 TAGGED='no'
 if [ ! -z "$BRANCH_EXISTED" ]; then
