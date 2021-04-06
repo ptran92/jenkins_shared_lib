@@ -1,3 +1,3 @@
-def call() {
-    echo "Hello world from groovy"
+def call(message) {
+    echo "Hello world from groovy: $message"
 }
