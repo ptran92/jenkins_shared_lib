@@ -7,6 +7,9 @@ RELEASE_XML_FILE=$ENV_RELEASE_XML_FILE
 RELEASE_TAG_PREDFIX=$ENV_RELEASE_TAG_PREDFIX
 
 # Create release branch
+git config user.email "tran.thanh.bao.phu92@gmail.com"
+git config user.name "Phu Tran"
+
 echo "this is xml file" > ${RELEASE_XML_FILE}
 git checkout -b ${RELEASE_BRANCH}
 git add ${RELEASE_XML_FILE}
