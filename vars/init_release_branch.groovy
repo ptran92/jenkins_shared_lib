@@ -24,4 +24,6 @@ def call(major_minor, branch, xmlfile, prefix) {
         sh(libraryResource('tag_all_projects.sh'))
     }
 
+    sh(script: "git tag -f $nextVersion")
+    sh(script: "git push --atomic origin $branch $nextVersion")
 }
