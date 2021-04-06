@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-# Check number of arguments
-if [[ $# -ne 1 ]]; then
-    echo "Invalid arguments" >&2
-    echo "$0 TARGET-MAJOR-MINOR-VERSION" >&2
-    echo "Ex. $0 0.1" >&2
-    exit 1
-fi
 
 TARGET_MAJOR_MINOR_VERSION=$1
 echo TARGET_MAJOR_MINOR_VERSION=$TARGET_MAJOR_MINOR_VERSION >&2

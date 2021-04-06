@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
 
-# Check number of arguments
-if [[ $# -ne 4 ]]; then
-    echo "Invalid arguments" >&2
-    echo "$0 MAJOR_MINOR BRANCH XML_FILE TAG_PREDFIX" >&2
-    echo "Ex. $0 0.2 internal/0.2 latest.xml DuckburgV2" >&2
-    exit 1
-fi
-
 # Get user inputs
 RELEASE_MAJOR_MINOR=$ENV_RELEASE_MAJOR_MINOR
 RELEASE_BRANCH=$ENV_RELEASE_BRANCH
