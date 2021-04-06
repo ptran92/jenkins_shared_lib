@@ -9,6 +9,7 @@ RELEASE_TAG_PREDFIX=$ENV_RELEASE_TAG_PREDFIX
 # Create release branch
 git config --global user.email "tran.thanh.bao.phu92@gmail.com"
 git config --global user.name "Phu Tran"
+git remote add origin https://github.com/ptran92/gstreamer.git
 
 echo "this is xml file" > ${RELEASE_XML_FILE}
 git checkout -b ${RELEASE_BRANCH}
