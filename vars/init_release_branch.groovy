@@ -24,7 +24,7 @@ def call(major_minor, branch, xmlfile, prefix) {
         sh(libraryResource('tag_all_projects.sh'))
     }
 
-    sh(script: "echo \"current dir is $PWD\"")
+    sh(script: "echo \"current dir is $PWD\"; ls -la")
     sh(script: "git tag -f $nextVersion")
-    sh(script: "git push --atomic origin $branch $nextVersion")
+    // sh(script: "git push --atomic origin $branch $nextVersion")
 }
