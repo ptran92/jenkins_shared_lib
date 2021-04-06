@@ -5,6 +5,23 @@ def call(major_minor, branch, xmlfile, prefix) {
         "ENV_RELEASE_XML_FILE=$xmlfile",
         "ENV_RELEASE_TAG_PREDFIX=$prefix"
         ]) {
-        return sh(libraryResource('init_release_branch.sh'))
+        sh(libraryResource('init_release_branch.sh'))
     }
+
+    def nextVersion = ""
+
+    withEnv([
+        "ENV_TARGET_MAJOR_MINOR_VERSION=$major_minor"
+        ]) {
+        nextVersion = sh(libraryResource('next_tag.sh'))
+    }
+
+    withEnv([
+        "ENV_RELEASE_XML_FILE=$xmlfile",
+        "ENV_RELEASE_TAG=$prefix-$nextVersion",
+        "ENV_RELEASE_XML_FILE=$xmlfile"
+        ]) {
+        sh(libraryResource('tag_all_projects.sh'))
+    }
+
 }
