@@ -9,6 +9,9 @@ pipeline {
                 script {
                     // Call test my_func from shared lib
                     my_func("This is Jenkins", "test", "with shared lib")
+
+                    // Call test is_branch_existed
+                    
                 }
             }
         }
