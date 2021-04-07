@@ -3,15 +3,32 @@
 
 pipeline {
     agent any
+
+    post { cleanup { deleteDir() } }
+
     stages {
         stage('1. Run shared lib') {
             steps {
+                checkout([$class: 'GitSCM', branches: [[name: "master"]], userRemoteConfigs: [[url: 'https://github.com/ptran92/gstreamer.git']]])
+
                 script {
                     // Call test my_func from shared lib
                     my_func("This is Jenkins", "test", "with shared lib")
 
                     // Call test is_branch_existed
-                    
+                    is_branch_exist("remotes/origin/master")
+
+                    // Call test init_release_branch
+                    init_release_branch("0.1", "internal/0.1", "output.xml", "Ptran_")
+
+                    sh """#!/bin/bash
+                    if [[ -f "output.xml" ]]; then
+                        echo "File exist"
+                        cat output.xml
+                    else
+                        echo "File output.xml not exist"
+                    fi
+                    """
                 }
             }
         }
