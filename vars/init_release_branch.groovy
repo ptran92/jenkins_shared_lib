@@ -1,9 +1,18 @@
 def call(major_minor, branch, xmlfile, prefix) {
+    // withEnv([
+    //     "ENV_RELEASE_MAJOR_MINOR=$major_minor",
+    //     "ENV_RELEASE_BRANCH=$branch",
+    //     "ENV_RELEASE_XML_FILE=$xmlfile",
+    //     "ENV_RELEASE_TAG_PREDFIX=$prefix"
+    //     ]) {
+    //     sh(libraryResource('init_release_branch.sh'))
+    // }
+
+    // New way to input arguments to bash scripts
     withEnv([
-        "ENV_RELEASE_MAJOR_MINOR=$major_minor",
-        "ENV_RELEASE_BRANCH=$branch",
-        "ENV_RELEASE_XML_FILE=$xmlfile",
-        "ENV_RELEASE_TAG_PREDFIX=$prefix"
+        "1=$major_minor",
+        "2=$branch",
+        "3=$xmlfile"
         ]) {
         sh(libraryResource('init_release_branch.sh'))
     }
