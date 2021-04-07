@@ -1,20 +1,8 @@
 #!/usr/bin/env bash
 
-# Get user inputs
-if [[ $# -ne 3 ]]; then
-    echo "Invalid arguments" >&2
-    echo "Num arguments is $#"
-    exit 1
-fi
-
-# Get user inputs
-RELEASE_MAJOR_MINOR=$1
-RELEASE_BRANCH=$2
-RELEASE_XML_FILE=$3
-
-# RELEASE_MAJOR_MINOR=$ENV_RELEASE_MAJOR_MINOR
-# RELEASE_BRANCH=$ENV_RELEASE_BRANCH
-# RELEASE_XML_FILE=$ENV_RELEASE_XML_FILE
+RELEASE_MAJOR_MINOR=$(printenv ENV_RELEASE_MAJOR_MINOR)
+RELEASE_BRANCH=$(printenv ENV_RELEASE_BRANCH)
+RELEASE_XML_FILE=$(printenv ENV_RELEASE_XML_FILE)
 
 # Create release branch
 git config --global user.email "tran.thanh.bao.phu92@gmail.com"
