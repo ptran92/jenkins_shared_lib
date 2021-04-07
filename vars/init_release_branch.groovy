@@ -12,7 +12,8 @@ def call(major_minor, branch, xmlfile, prefix) {
     withEnv([
         "1=$major_minor",
         "2=$branch",
-        "3=$xmlfile"
+        "3=$xmlfile",
+        "#=3"
         ]) {
         sh(libraryResource('init_release_branch.sh'))
     }
