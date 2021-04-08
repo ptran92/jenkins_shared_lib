@@ -4,7 +4,7 @@ def call(major_minor, branch, xmlfile, prefix) {
         "ENV_RELEASE_BRANCH=$branch",
         "ENV_RELEASE_XML_FILE=$xmlfile"
         ]) {
-        sh(libraryResource('init_release_branch.sh'))
+        sh(script: libraryResource('init_release_branch.sh'), label: 'tag_all_projects')
     }
 
     // def nextVersion = ""
@@ -27,6 +27,7 @@ def call(major_minor, branch, xmlfile, prefix) {
     }
 
     sh(script: "echo \"current dir is \$PWD\"; ls -la")
+    sh(script: "echo \"nextVersion is $nextVersion\"")
     sh(script: "git tag -f $nextVersion")
     // sh(script: "git push --atomic origin $branch $nextVersion")
 }
