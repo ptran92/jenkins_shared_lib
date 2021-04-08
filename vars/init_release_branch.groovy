@@ -7,13 +7,16 @@ def call(major_minor, branch, xmlfile, prefix) {
         sh(libraryResource('init_release_branch.sh'))
     }
 
-    def nextVersion = ""
+    // def nextVersion = ""
 
-    withEnv([
-        "ENV_TARGET_MAJOR_MINOR_VERSION=$major_minor"
-        ]) {
-        nextVersion = sh(libraryResource('next_tag.sh'))
-    }
+    // withEnv([
+    //     "ENV_TARGET_MAJOR_MINOR_VERSION=$major_minor"
+    //     ]) {
+    //     nextVersion = sh(libraryResource('next_tag.sh'))
+    // }
+
+    // new way
+    def nextVersion = next_tag(major_minor)
 
     withEnv([
         "ENV_RELEASE_XML_FILE=$xmlfile",
