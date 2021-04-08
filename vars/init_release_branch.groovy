@@ -23,7 +23,7 @@ def call(major_minor, branch, xmlfile, prefix) {
         "ENV_RELEASE_TAG=$prefix-$nextVersion",
         "ENV_RELEASE_XML_FILE=$xmlfile"
         ]) {
-        sh(libraryResource('tag_all_projects.sh'))
+        sh(script: libraryResource('tag_all_projects.sh'), label: 'tag_all_projects')
     }
 
     sh(script: "echo \"current dir is \$PWD\"; ls -la")
